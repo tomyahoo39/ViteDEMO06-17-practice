@@ -1,183 +1,271 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mori Studio｜插畫與視覺設計</title>
-  <meta name="description" content="插畫與視覺故事設計作品集，專注於角色設計、品牌插畫與概念視覺。">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.7.0/dist/aos.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靜謐閱讀咖啡廳 | The Silent Reader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.7.0/dist/aos.css">
+    <style>
+        body { font-family: 'Montserrat', 'Noto Serif TC', sans-serif; background-color: #FBF9F4; color: #433D35; }
+        .font-serif { font-family: 'Noto Serif TC', serif; }
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)); }
+    </style>
 </head>
-<body>
-  <div class="page-bg"></div>
+<body class="antialiased">
 
-  <nav class="navbar navbar-expand-lg py-3">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <span class="brand-mark">M</span>
-        <span class="fw-semibold">Mori Studio</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-          <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-          <li class="nav-item"><a class="nav-link" href="projects.html">作品</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">關於我</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">聯絡</a></li>
-          
-        </ul>
-      </div>
+    <nav class="fixed w-full z-50 bg-[#FBF9F4]/90 backdrop-blur-md py-6 border-b border-[#E5DED4]">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-baseline gap-2 md:gap-4 cursor-pointer">
+                <img src="imgs/logo.png" alt="Logo" class="h-6 md:h-8 lg:h-10 w-auto">
+                <h1 class="font-serif text-xl md:text-2xl lg:text-3xl font-bold tracking-widest">The Silent Reader</h1>
+            </div>
+            <div class="flex items-center gap-4 md:gap-8">
+                <ul class="hidden lg:flex gap-8 text-sm uppercase tracking-widest font-light">
+                    <li><a href="#about" class="hover:text-[#A08C75] transition">關於我們</a></li>
+                    <li><a href="#space" class="hover:text-[#A08C75] transition">空間導覽</a></li>
+                    <li><a href="#menu" class="hover:text-[#A08C75] transition">精選菜單</a></li>
+                    <li><a href="#journal" class="hover:text-[#A08C75] transition">選書日誌</a></li>
+                    <li><a href="#booking" class="hover:text-[#A08C75] transition">空間預約</a></li>
+                    <li><a href="#contact" class="hover:text-[#A08C75] transition">聯絡資訊</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="index2.html" class="inline-block bg-[#433D35] text-white px-3 py-2 text-[10px] md:text-xs uppercase tracking-widest hover:bg-[#A08C75] transition-colors duration-300 rounded-sm font-medium whitespace-nowrap">
+                        返回作品集
+                    </a>
+                    <button id="menu-toggle" class="lg:hidden text-[#433D35] p-1 focus:outline-none" aria-label="選單">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 行動版選單 -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#FBF9F4]/95 backdrop-blur-md border-t border-[#E5DED4] absolute w-full left-0 top-full py-8 px-6 shadow-xl">
+            <ul class="flex flex-col gap-6 text-sm uppercase tracking-widest font-light text-center">
+                <li><a href="#about" class="mobile-link hover:text-[#A08C75] transition">關於我們</a></li>
+                <li><a href="#space" class="mobile-link hover:text-[#A08C75] transition">空間導覽</a></li>
+                <li><a href="#menu" class="mobile-link hover:text-[#A08C75] transition">精選菜單</a></li>
+                <li><a href="#journal" class="mobile-link hover:text-[#A08C75] transition">選書日誌</a></li>
+                <li><a href="#booking" class="mobile-link hover:text-[#A08C75] transition">空間預約</a></li>
+                <li><a href="#contact" class="mobile-link hover:text-[#A08C75] transition">聯絡資訊</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="h-screen relative flex items-center justify-center overflow-hidden">
+        <img src="imgs/4.png" class="absolute w-full h-full object-cover object-top" alt="Cafe">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="relative z-10 text-center text-white px-6" data-aos="fade-up" data-aos-duration="1500">
+            <h2 class="text-6xl md:text-8xl font-serif mb-6">靜謐閱讀咖啡廳</h2>
+            <p class="text-xl md:text-2xl font-light tracking-wide opacity-90">一杯咖啡，一段靈魂的閱讀時光。</p>
+            <a href="#booking" class="mt-10 inline-block border border-white px-8 py-3 hover:bg-white hover:text-[#433D35] transition">預約您的安靜角落</a>
+        </div>
+    </header>
+
+    <section id="about" class="py-24 container mx-auto px-6 text-center" data-aos="fade-up">
+        <h3 class="font-serif text-4xl mb-12">我們的理念：慢</h3>
+        <p class="max-w-3xl mx-auto text-lg leading-relaxed text-[#433D35]/80">
+            在都市的喧囂中，我們為閱讀者保留一方淨土。每一行文字都經過精心挑選，每一杯咖啡都體現職人精神。我們相信，真正的閱讀是需要留白的。
+        </p>
+    </section>
+
+    <section id="space" class="bg-[#E5DED4]/30 py-24">
+        <div class="container mx-auto px-6">
+            <h3 class="font-serif text-4xl mb-16 text-center" data-aos="fade-up">環境導覽</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="overflow-hidden rounded-sm" data-aos="zoom-in" data-aos-delay="100"><img src="imgs/1-2.png" class="w-full h-64 object-cover hover:scale-105 transition duration-500" alt="Room"></div>
+                <div class="overflow-hidden rounded-sm" data-aos="zoom-in" data-aos-delay="200"><img src="imgs/2.png" class="w-full h-64 object-cover hover:scale-105 transition duration-500" alt="Books"></div>
+                <div class="overflow-hidden rounded-sm" data-aos="zoom-in" data-aos-delay="300"><img src="imgs/3.png" class="w-full h-64 object-cover hover:scale-105 transition duration-500" alt="Coffee"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-24 container mx-auto px-6" data-aos="fade-up">
+        <h3 class="font-serif text-4xl mb-16 text-center">精選菜單</h3>
+        <div class="max-w-2xl mx-auto border-t border-[#A08C75] pt-10">
+            <div class="flex justify-between py-6 border-b border-[#E5DED4]">
+                <div><h4 class="text-xl font-serif">午後微光拿鐵</h4><p class="text-sm">中深焙精品豆與綿密小農鮮乳</p></div>
+                <span class="font-serif text-lg">$180</span>
+            </div>
+            <div class="flex justify-between py-6 border-b border-[#E5DED4]">
+                <div><h4 class="text-xl font-serif">島嶼晨霧手沖</h4><p class="text-sm">明亮柑橘調，尾韻帶有茉莉花香</p></div>
+                <span class="font-serif text-lg">$220</span>
+            </div>
+            <div class="flex justify-between py-6 border-b border-[#E5DED4]">
+                <div><h4 class="text-xl font-serif">沈思者布朗尼</h4><p class="text-sm">70% 苦甜巧克力，點綴海鹽與焦糖</p></div>
+                <span class="font-serif text-lg">$150</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="journal" class="py-24 bg-[#433D35] text-[#FBF9F4]">
+        <div class="container mx-auto px-6">
+            <h3 class="font-serif text-4xl mb-16 text-center" data-aos="fade-up">選書日誌</h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="p-8 border border-[#A08C75]/30" data-aos="fade-right">
+                    <h4 class="text-2xl font-serif mb-4">本月選書：靜默的森林</h4>
+                    <p class="text-sm leading-relaxed mb-6">關於如何在資訊爆炸的時代，找回專注力的閱讀指南...</p>
+                    <button class="underline underline-offset-4 decoration-[#A08C75]">閱讀完整文章</button>
+                </div>
+                <div class="p-8 border border-[#A08C75]/30" data-aos="fade-left">
+                    <h4 class="text-2xl font-serif mb-4">咖啡知識：焙度的哲學</h4>
+                    <p class="text-sm leading-relaxed mb-6">淺焙與深焙的選擇，不僅是風味，更是對於時間的理解...</p>
+                    <button class="underline underline-offset-4 decoration-[#A08C75]">閱讀完整文章</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="py-24 container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-20">
+            <div data-aos="fade-up">
+                <h3 class="font-serif text-4xl mb-8">預約您的靜謐時光</h3>
+                <p class="mb-10 text-[#433D35]/70 leading-relaxed">提供小型讀書會、私人講座或專注工作的角落。請填寫下方表單，我們將於 24 小時內與您聯繫確認。</p>
+                
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex flex-col border-b border-[#E5DED4] pb-2">
+                            <label class="text-[10px] uppercase tracking-widest mb-1 text-[#A08C75]">姓名 Name</label>
+                            <input type="text" placeholder="您的稱呼" class="bg-transparent outline-none py-1 placeholder:text-[#433D35]/30">
+                        </div>
+                        <div class="flex flex-col border-b border-[#E5DED4] pb-2">
+                            <label class="text-[10px] uppercase tracking-widest mb-1 text-[#A08C75]">電子郵件 Email</label>
+                            <input type="email" placeholder="your@email.com" class="bg-transparent outline-none py-1 placeholder:text-[#433D35]/30">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex flex-col border-b border-[#E5DED4] pb-2">
+                            <label class="text-[10px] uppercase tracking-widest mb-1 text-[#A08C75]">預約日期 Date</label>
+                            <input type="date" class="bg-transparent outline-none py-1 text-[#433D35]/50">
+                        </div>
+                        <div class="flex flex-col border-b border-[#E5DED4] pb-2">
+                            <label class="text-[10px] uppercase tracking-widest mb-1 text-[#A08C75]">預約人數 Guests</label>
+                            <select class="bg-transparent outline-none py-1 text-[#433D35]/50">
+                                <option>1 位</option>
+                                <option>2 位</option>
+                                <option>3-4 位</option>
+                                <option>5 位以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex flex-col border-b border-[#E5DED4] pb-2">
+                        <label class="text-[10px] uppercase tracking-widest mb-1 text-[#A08C75]">備註事項 Message</label>
+                        <textarea rows="2" placeholder="是否有特殊需求？" class="bg-transparent outline-none py-1 placeholder:text-[#433D35]/30 resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full md:w-auto bg-[#433D35] text-white px-12 py-4 text-xs uppercase tracking-widest hover:bg-[#A08C75] transition-colors duration-300 rounded-sm">
+                        送出預約申請
+                    </button>
+                </form>
+            </div>
+            
+            <div id="faq" class="lg:pt-16" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-[#E5DED4]/20 p-8 md:p-12 rounded-sm border border-[#E5DED4]">
+                    <h3 class="font-serif text-2xl mb-8 border-l-2 border-[#A08C75] pl-4">常見問題 (FAQ)</h3>
+                    <div class="space-y-6">
+                        <details class="group border-b border-[#E5DED4] pb-4">
+                            <summary class="list-none cursor-pointer flex justify-between items-center font-medium hover:text-[#A08C75] transition-colors">
+                                店內需要保持安靜嗎？
+                                <span class="transition-transform duration-300 group-open:rotate-180">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </span>
+                            </summary>
+                            <p class="mt-4 text-sm text-[#433D35]/70 leading-relaxed">是的，我們致力於維護閱讀體驗。店內全面禁菸且請降低交談音量，讓每位讀者都能享受專注的時光。</p>
+                        </details>
+                        <details class="group border-b border-[#E5DED4] pb-4">
+                            <summary class="list-none cursor-pointer flex justify-between items-center font-medium hover:text-[#A08C75] transition-colors">
+                                有提供插座或 Wi-Fi 嗎？
+                                <span class="transition-transform duration-300 group-open:rotate-180">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </span>
+                            </summary>
+                            <p class="mt-4 text-sm text-[#433D35]/70 leading-relaxed">我們提供全店高速 Wi-Fi，特定區域設有電源插座，歡迎攜帶筆電進行低音量工作或閱讀。</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-[#E5DED4] py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-serif text-2xl mb-8">靜謐閱讀咖啡廳</h3>
+            <p class="text-sm mb-4">台北市大安區靜謐巷 12 號 | (02) 2345-6789</p>
+            <p class="text-sm mb-8 uppercase tracking-widest">週一至週日 10:00 - 20:00</p>
+            <div class="text-[#A08C75] text-xs">© 2024 The Silent Reader Cafe. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Lightbox 圖片放大預覽層 -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white hover:text-[#A08C75] transition-colors p-2" aria-label="關閉">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="放大預覽" class="max-w-[90%] max-h-[90vh] object-contain shadow-2xl scale-95 transition-transform duration-300">
     </div>
-  </nav>
 
-  <header class="hero-section">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6" data-aos="fade-right">
-          <span class="eyebrow">Illustration · Storytelling · Visual Design</span>
-          <h1 class="hero-title">把想像變成有溫度的畫面</h1>
-          <p class="hero-text">我專注於插畫、角色設計與品牌視覺，透過柔和的色彩與細膩的敘事，把每個概念轉化成能被記住的作品。</p>
-          <div class="d-flex gap-2 flex-wrap mt-4">
-            <a class="btn btn-primary-custom" href="projects.html">查看作品</a>
-            <a class="btn btn-secondary-custom" href="about.html">關於我</a>
-          </div>
-          <div class="mt-4 d-flex flex-wrap gap-2">
-            <span class="tag-pill">Character Design</span>
-            <span class="tag-pill">Editorial</span>
-            <span class="tag-pill">Brand Illustration</span>
-          </div>
-        </div>
-        <div class="col-lg-6" data-aos="fade-left">
-          <div class="hero-visual card-surface">
-            <div class="visual-frame">
-              <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=900&q=80" alt="插畫角色場景">
-            </div>
-            <div class="floating-card">
-              <p class="small-label">近期專案</p>
-              <h5>Fantasy Book Cover</h5>
-              <span>2026 · Concept Art</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+    <script src="https://unpkg.com/aos@2.7.0/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-in-out'
+        });
 
-  <main>
-    <section class="py-5">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-md-4" data-aos="fade-up">
-            <div class="info-card card-surface p-4 h-100">
-              <span class="info-number">01</span>
-              <h4>概念發想</h4>
-              <p>從品牌與故事脈絡切入，整理關鍵情緒與視覺方向。</p>
-            </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="info-card card-surface p-4 h-100">
-              <span class="info-number">02</span>
-              <h4>畫面構圖</h4>
-              <p>依照敘事節奏安排構圖，確保每一張圖都有清楚的焦點。</p>
-            </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="info-card card-surface p-4 h-100">
-              <span class="info-number">03</span>
-              <h4>完成交付</h4>
-              <p>提供可用於數位與印刷的多版本輸出，兼顧整體效果與效率。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
 
-    <section class="py-5">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-end mb-4">
-          <div>
-            <span class="eyebrow">Featured Works</span>
-            <h2 class="section-title">精選作品</h2>
-          </div>
-          <a class="text-link" href="projects.html">看更多作品</a>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-4" data-aos="zoom-in">
-            <article class="work-card card-surface h-100">
-              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80" alt="室內插畫作品">
-              <div class="p-4">
-                <span class="work-category">Interior Illustration</span>
-                <h4>柔光生活場景</h4>
-                <p>描繪溫和氛圍的生活空間，強調光影與細節層次。</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-            <article class="work-card card-surface h-100">
-              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80" alt="品牌插畫作品">
-              <div class="p-4">
-                <span class="work-category">Brand Visual</span>
-                <h4>品牌形象插畫</h4>
-                <p>結合品牌故事與色彩語彙，打造一致且有辨識度的視覺系統。</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <article class="work-card card-surface h-100">
-              <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="角色插畫作品">
-              <div class="p-4">
-                <span class="work-category">Character Design</span>
-                <h4>角色與世界觀設計</h4>
-                <p>從角色設定到畫面表現，讓每個角色都擁有完整的情感與故事張力。</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
+        // 切換選單顯示/隱藏
+        menuToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuIcon.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
+        });
 
-    <section class="py-5">
-      <div class="container">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-6" data-aos="fade-right">
-            <div class="quote-card card-surface p-5">
-              <span class="eyebrow">About the Style</span>
-              <h3>畫面不只要好看，更要有感受與記憶點。</h3>
-              <p>我相信插畫是溝通的語言，透過細膩的線條、柔和的色調與明確的情緒，把訊息傳遞得更自然、更有力量。</p>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-left">
-            <img class="img-fluid rounded-4" src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=1100&q=80" alt="插畫工作場景">
-          </div>
-        </div>
-      </div>
-    </section>
+        // 點擊連結後自動關閉選單
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
 
-    <section class="py-5 pb-6">
-      <div class="container">
-        <div class="cta-banner card-surface p-5 text-center" data-aos="fade-up">
-          <span class="eyebrow">Let's Work Together</span>
-          <h3 class="mt-2">有想法或專案需要視覺支持嗎？</h3>
-          <a class="btn btn-primary-custom mt-3" href="contact.html">聯絡我</a>
-        </div>
-      </div>
-    </section>
-  </main>
+        // Lightbox 放大預覽邏輯
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
 
-  <footer class="footer">
-    <div class="container text-center">
-      <p class="mb-0">© <span id="year"></span> Mori Studio</p>
-    </div>
-  </footer>
+        // 為環境導覽內的圖片加上點擊事件
+        const tourImages = document.querySelectorAll('#space img');
+        tourImages.forEach(img => {
+            img.classList.add('cursor-pointer');
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                // 使用 remove/add 確保縮放動畫執行
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+                document.body.style.overflow = 'hidden'; // 開啟時鎖定頁面捲動
+            });
+        });
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.7.0/dist/aos.js"></script>
-  <script src="script.js"></script>
+        const closeLightbox = () => {
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            document.body.style.overflow = ''; // 關閉時恢復頁面捲動
+        };
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        // 點擊背景空白處也能關閉
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    </script>
 </body>
 </html>
